@@ -204,6 +204,14 @@ def health():
     else:
         return render_template('health.html')
 
+@app.route('/',methods=['POST','GET'])
+def home():
+    return render_template('home.html')
+
+@app.route('/devs',methods=['POST','GET'])
+def dev():
+    return render_template('devs.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
 

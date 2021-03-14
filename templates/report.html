@@ -1,1 +1,78 @@
-{{data}}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  background-color:rgba(51, 25, 25, 0.8);
+  color:#fff;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(136, 77, 77, 0.8);
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+.container {
+  padding: 2px 16px;
+}
+.container h4{
+    text-align: center;
+    font-size:30px;
+}
+body{
+    background-image: url('http://www.seekgif.com/uploads/food-background-2.jpg');
+    background-size: cover;
+}
+ td{
+  border: 1px solid rgb(216, 180, 180);
+  padding:10px;
+  margin:12px;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="container">
+    <h4><b>Report</b></h4>
+    <table style="width:100%;border: 1px solid black;">
+        <tr>
+          <td>BMR</td>
+          <td>{{data['BMR']}}</td>
+        </tr>
+        <tr>
+          <td>Calories Required</td>
+          <td>{{data['BMRCAL']}}</td>
+        </tr>
+        <tr>
+          <td>Calorie Rating</td>
+          <td>{{data['RATING_CAL']}}</td>
+        </tr>
+        <tr>
+            <td>Calorie Quota</td>
+            <td>{{data['CAL_QUOTA']}}</td>
+        </tr>
+    </table> 
+    <br>
+    <!-- <p>BMR&emsp;&emsp;&emsp;&emsp;&ensp;: {{data['BMR']}}</p> 
+    <p>Calories Needed : {{data['BMRCAL']}}</p>
+    <p>Calorie rating&emsp;&nbsp; : {{data['RATING_CAL']}}</p>
+    <p>Calorie Quota&emsp;&ensp;: {{data['CAL_QUOTA']}}</p> -->
+
+  </div>
+</div>
+
+</body>
+</html> 
