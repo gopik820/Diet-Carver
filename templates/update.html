@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{{ url_for('static', filename='pictures/siteicon.ico')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/mainpage.css')}}">     <!--Click ctrl + shift + R  for a hard refresh-->
+    <title>Diet Carver</title>
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="site-title">
+
+            <div class="title">
+                <h1>Diet Carver</h1>
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <div class="forms">
+
+            <div class="form-title">
+
+                <h2>Edit your Values!</h2>
+
+            </div>
+
+            <div class="form-content">
+
+                <form action="/update/{{item.id}}" method="POST">
+                    
+                    <div class="content">
+
+                        <div class="categories">
+
+                            <h2>Food</h2>
+                            <h2>Calories</h2>
+                            <h2>Fat (g) </h2>
+                            <h2>Protein (g) </h2>
+                            <h2>Carbs (g) </h2>
+    
+                        </div>
+    
+    
+                        <div class="values">
+    
+                            <input type="text" name="food" class="key" placeholder="Enter the Food" autocomplete="off" required value="{{item.food}}">
+                            <br>
+        
+                            <input type="text" name="calories" class="key" placeholder="Enter the Calories" autocomplete="off"required  value="{{item.calories}}">
+                            <br>
+        
+                            <input type="text" name="fat" id="fat" placeholder="Enter the amount of Fat" autocomplete="off"required  value="{{item.fat}}">
+                            <br>
+        
+                            <input type="text" name="protein" id="protein" placeholder="Enter the amount of Protein" autocomplete="off"required  value="{{item.protein}}">
+                            <br>
+        
+                            <input type="text" name="carbs" id="carbs" placeholder="Enter the amount of carbs" autocomplete="off"required  value="{{item.carbs}}">
+                            <br>
+        
+                        </div>
+    
+                    </div>
+
+                    <div class="button-form">  
+
+                        <input type="submit" name="food-log" value="Update">
+
+                    </div>
+                    
+
+                </form>
+
+            </div>
+        </div>
+
+    </main>
+    
+
+
+    
+</body>
+</html>

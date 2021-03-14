@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{ url_for('static', filename='pictures/siteicon.ico')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/mainpage.css')}}">   
+    <title>Diet Carver</title>
+    <style>
+
+    </style>
+</head>
+
+<body >
+
+    <header>
+
+        <div class="site-title">
+
+            <div class="title">
+                <h1 style="text-align:center">Diet Carver</h1>
+            </div>
+
+        </div>
+
+        <div class="goals">
+
+            <button type="button" data-modal="modal1">Set Goal</button>
+            <a href="/reset">&nbsp; Reset &nbsp;</a>
+
+        </div>
+
+    </header>
+
+    <main id='main'>
+
+        <div class="progress">
+
+            <button type="button">View Progress</button>
+
+        </div>
+        <div class="progress-bar" id="p">
+
+            <div class="user-progress">
+        
+                <p>Calorie Progress: {{ccal}}/{{goals.calorie_goal}}g</p>
+        
+                <progress max="{{goals.calorie_goal}}" id="calorie" value="{{ccal}}"></progress>
+        
+            </div>
+        
+            <div class="user-progress">
+        
+                <p>Fat Progress: {{cf}}/{{goals.fat_goal}}g</p>
+                <progress max="{{goals.fat_goal}}" value="{{cf}}"></progress>
+        
+            </div>
+        
+            <div class="user-progress">
+        
+                <p>Protein Progress: {{cp}}/{{goals.protein_goal}}g</p>
+                <progress max="{{goals.protein_goal}}" value="{{cp}}"></progress>
+        
+            </div>
+        
+            <div class="user-progress">
+        
+                <p>Carbs Progress: {{cc}}/{{goals.carbs_goal}}g</p>
+                <progress max="{{goals.carbs_goal}}" value="{{cc}}"></progress>
+        
+            </div>
+        
+        </div>
+
+        
+
+        <div class="forms">
+
+            <div class="form-title">
+
+                <h2>Track Your Diet</h2>
+
+            </div>
+
+            <div class="form-content">
+
+                <form action="/" method="POST">
+                    
+                    <div class="content">
+
+                        <div class="categories">
+
+                            <h2>Food</h2>
+                            <h2>Calories</h2>
+                            <h2>Fat (g) </h2>
+                            <h2>Protein (g) </h2>
+                            <h2>Carbs (g) </h2>
+    
+                        </div>
+    
+    
+                        <div class="values">
+    
+                            <input type="text" name="food" class="key" placeholder="Enter the Food" autocomplete="off" required>
+                            <br>
+        
+                            <input type="number" step="any"name="calories" class="key" placeholder="Enter the Calories" autocomplete="off"required>
+                            <br>
+        
+                            <input type="number" step="any" name="fat" id="fat" placeholder="Enter the amount of Fat" autocomplete="off"required>
+                            <br>
+        
+        
+                            <input type="number" step="any" name="protein" id="protein" placeholder="Enter the amount of Protein" autocomplete="off"required>
+                            <br>
+        
+                            <input type="number"  step="any" name="carbs" id="carbs" placeholder="Enter the amount of carbs" autocomplete="off"required>
+                            <br>
+        
+                        </div>
+    
+                    </div>
+
+                    <div class="button-form">  
+
+                        <input type="submit" name="food-log" value="Add">
+
+                    </div>
+                    
+
+                </form>
+
+            </div>
+        </div>
+
+        {% for item in items %}
+
+        <div class="user-items">
+
+            <div class="item-title">
+
+                <h3>{{item.food}}</h3>
+                <h3> {{item.date_created.date()}}</h3>
+                
+            </div>
+
+
+            <div class="items">
+
+                <div class="keys">
+
+                    <h4>Calories: </h4>
+                    <h4>Fat: </h4>
+                    <h4>Protein: </h4>
+                    <h4>Carbs: </h4>
+
+                </div>
+
+
+                <div class="values">
+
+                    <h5>{{item.calories}}</h5>
+                    <h5>{{item.fat}} g</h5>
+                    <h5>{{item.protein}} g</h5>
+                    <h5>{{item.carbs}} g</h5>
+
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <div class="del">
+                    <a id='del'href="/delete/{{item.id}}">Delete</a>
+                </div>
+                
+                <div class="update">
+                    
+                    <a href="/update/{{item.id}}">Update</a>
+
+                </div>
+                
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+
+
+
+    </main>
+
+
+    <div class="modal" id="modal1">
+
+        <div class="modal-content">
+
+            <div class="modal-form">
+
+                <div class="modal-title">
+
+                    <h4>My Goals</h4>
+                    
+                </div>
+                
+                <div class="form-content">
+
+                    <form action="/" method="POST">
+                        
+                        <div class="content">
+    
+                            <div class="categories">
+    
+                                <h2>Calory Goal: </h2>
+                                <h2>Fat Goal: </h2>
+                                <h2>Protein Goal: </h2>
+                                <h2>Carbs Goal: </h2>
+        
+                            </div>
+        
+        
+                            <div class="values">
+        
+                                <input type="number" name="calorie-goal" id="calorie-goal" placeholder="Enter your calory goal" autocomplete="off" required>
+                                <br>
+            
+                                <input type="number" name="fat-goal" id="fat-goal" placeholder="Enter your fat goal" autocomplete="off" required>
+                                <br>
+            
+                                <input type="number" name="protein-goal" id="protein-goal" placeholder="Enter your protein goal" autocomplete="off" required>
+                                <br>
+            
+            
+                                <input type="number" name="carbs-goal" id="carbs-goal" placeholder="Enter your carbs goal" autocomplete="off" required>
+                                <br>
+            
+                            </div>
+        
+                        </div>
+    
+                        <div class="button-form">  
+    
+                            <input type="submit" name="goals" value="Add">
+                            <button class="close-modal">Close</button>
+    
+                        </div>
+                        
+    
+                    </form>
+    
+                </div>
+
+            
+
+    </div>
+    
+    <script src="{{url_for('static', filename='javascript/script.js')}}"></script>
+</body>
+</html>

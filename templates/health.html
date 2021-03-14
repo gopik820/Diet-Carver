@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{ url_for('static', filename='pictures/siteicon.ico')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/mainpage.css')}}">     <!--Click ctrl + shift + R  for a hard refresh-->
+    <title>My Food Tracker</title>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="site-title">
+
+            <div class="title">
+                <h1>My Health Tracker</h1>
+            </div>
+
+        </div>
+
+    </header>
+
+    <main id='main'>
+
+        <div class="forms">
+
+            <div class="form-title">
+
+                <h2>Track Your health!</h2>
+
+            </div>
+
+            <div class="form-content">
+
+                <form action="/health" method="POST">
+                    
+                    <div class="content">
+
+                        <div class="categories">
+
+                            <h2>Age</h2>
+                            <h2>Gender</h2>
+                            <h2>Height</h2>
+                            <h2>Weight</h2>
+                            <h2>activity index</h2>
+    
+                        </div>
+    
+    
+                        <div class="values">
+    
+                            <input type="number" name="age" class="key" placeholder="Age" autocomplete="off" required>
+                            <br>
+        
+                            <input type="text" step="any"name="gender" class="key" placeholder="Enter your gender" autocomplete="off"required>
+                            <br>
+        
+                            <input type="number" step="any" name="height" placeholder="Enter the height" autocomplete="off"required>
+                            <br>
+        
+        
+                            <input type="number" step="any" name="weight"  placeholder="Enter the weight" autocomplete="off"required>
+                            <br>
+        
+                            <input type="number"  step="any" name="activity_index" placeholder="Enter your activity index" autocomplete="off"required>
+                            <br>
+        
+                        </div>
+    
+                    </div>
+
+                    <div class="button-form">  
+
+                        <input type="submit" name="food-log" value="Add">
+
+                    </div>
+                    
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{url_for('static', filename='javascript/script.js')}}"></script>
+</body>
+</html>
