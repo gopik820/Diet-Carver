@@ -422,13 +422,15 @@ progress[value]
     border: 0.5px solid rgb(36,36,36);
 }
 
-.progress button:hover{
+.progress button:hover
+{
 
     color: white;
     background-color:  rgb(36,36,36);
 }
 
-.progress-bar{
+.progress-bar
+{
     height:55vh;
     margin-bottom: 20px;
     border-radius:8px;
@@ -437,7 +439,8 @@ progress[value]
 
 }
 
-.progress-bar p{
+.progress-bar p
+{
     font-size: 23px;
 }
 

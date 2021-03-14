@@ -35,7 +35,7 @@ class Goal(db.Model):
     carbs_goal = db.Column(db.Integer)
 
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/diet', methods=['POST', 'GET'])
 def index():
 
     user_calories_goal = 0
@@ -59,7 +59,7 @@ def index():
             try:
                 db.session.add(new_user)
                 db.session.commit()
-                return redirect('/')
+                return redirect('/diet')
 
             except:
                 return "There was an issue !"
@@ -76,7 +76,7 @@ def index():
             try:
                 db.session.add(new_goal)
                 db.session.commit()
-                return redirect('/')
+                return redirect('/diet')
 
             except:
                 return "There was an issue !"
@@ -105,7 +105,7 @@ def index():
             goals.append(Goal(calorie_goal=user_calories_goal, fat_goal=user_f_goal, protein_goal=user_p_goal, carbs_goal=user_carbs_goal))
 
 
-        return render_template('index.html', items = items, goals = goals[-1], ccal = ccal, cf = cf, cp = cp, cc = cc)
+        return render_template('diet.html', items = items, goals = goals[-1], ccal = ccal, cf = cf, cp = cp, cc = cc)
 
 @app.route('/reset')
 def reset():
@@ -133,7 +133,7 @@ def reset():
         except:
             return "Error in resetting"
 
-    return redirect('/')
+    return redirect('/diet')
 
 
 @app.route('/delete/<int:id>')
@@ -144,7 +144,7 @@ def delete(id):
     try:
         db.session.delete(delete_item)
         db.session.commit()
-        return redirect('/')
+        return redirect('/diet')
 
     except:
 
@@ -168,7 +168,7 @@ def update(id):
 
         try:
             db.session.commit()
-            return redirect('/')
+            return redirect('/diet')
         
         except:
             return "an issue occured"
